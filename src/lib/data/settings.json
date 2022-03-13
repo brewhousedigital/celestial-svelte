@@ -1,0 +1,4 @@
+{
+  "unauthenticatedFallbackPage": "/login",
+  "errorMessageTimeoutLength": 10000
+}
