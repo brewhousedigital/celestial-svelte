@@ -1,12 +1,21 @@
 <script>
-    import md5 from "crypto-js/md5";
     import {user} from "$lib/store";
 
     export let sizeLarge = false;
 
     // This is used with Gravatar
     let md5Hash = "";
-    $: md5Hash = md5($user.email);
+
+    // Anytime the user email changes, update the avatar by fetching a new md5 hash
+    $: {
+        if(typeof fetch !== "undefined") {
+            fetch(`/api/md5/${$user.email}`)
+                .then(response => response.json())
+                .then(response => {
+                    $: md5Hash = response.md5;
+                })
+        }
+    }
 </script>
 
 <div class="mask mask-hexagon">
