@@ -1,6 +1,6 @@
 <script>
     export let href = "#";
-    export let classes = "";
+    export let className = "";
     export let authenticated = false;
 
     import settings from "$lib/data/settings.json";
@@ -22,7 +22,7 @@
 </script>
 
 <a href={constructedHref}
-   class={`${classes}`}
+   class={className}
    sveltekit:prefetch>
     <slot></slot>
 </a>

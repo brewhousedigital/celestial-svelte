@@ -3,6 +3,8 @@
     import {handleLogout} from "$lib/functions/auth";
     import Link from "$lib/components/reusable/Link.svelte";
     import UserAvatar from "$lib/components/specific/UserAvatar.svelte";
+    import ThemeController from "$lib/components/specific/ThemeController.svelte";
+    import ThemeControllerMulti from "$lib/components/specific/ThemeControllerMulti.svelte";
 </script>
 
 <div class="navbar pr-4">
@@ -37,6 +39,10 @@
                 <li><Link authenticated={true} href="/">Link Component</Link></li>
                 {#if $user.email}<li><a href="/members">Restricted Link</a></li>{/if}
             </ul>
-        </div>
+        </div><!-- end account dropdown -->
+
+        <ThemeController />
+
+        <ThemeControllerMulti />
     </div>
 </div>
