@@ -8,10 +8,10 @@
     }
 </script>
 
-<div class="container mx-auto">
-    <h1 class="text-5xl font-bold">Log In</h1>
+<div class="">
+    <h1 class="">Log In</h1>
 
-    <form on:submit|preventDefault={handleLogin(loginData)} class="card card-body" style="max-width: 400px">
+    <form on:submit|preventDefault={handleLogin(loginData)} class="" style="max-width: 400px">
         <Input label="Email:"
                id="login-email"
                bind:value={loginData.email}
@@ -24,6 +24,6 @@
                type="password"
                autocomplete="current-password" />
 
-        <button type="submit" class="btn btn-primary">Log In</button>
+        <button type="submit" class="">Log In</button>
     </form>
 </div>

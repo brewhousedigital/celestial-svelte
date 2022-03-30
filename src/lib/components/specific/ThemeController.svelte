@@ -1,8 +1,6 @@
 <script>
     import {theme} from "$lib/store";
     import {onMount} from "svelte";
-    import SunIcon from "$lib/components/icons/SunIcon.svelte";
-    import MoonIcon from "$lib/components/icons/MoonIcon.svelte";
 
     // LocalStorage name
     let localStorageName = "site-theme";
@@ -43,6 +41,10 @@
     })
 </script>
 
-<button aria-label="Change your theme" on:click={handleThemeChange} class="btn btn-ghost">
-    {#if $theme}<SunIcon />{:else}<MoonIcon />{/if}
+<button aria-label="Change your theme" on:click={handleThemeChange} class="">
+    {#if $theme}
+        <i class="bi bi-brightness-high-fill"></i>
+    {:else}
+        <i class="bi bi-moon-fill"></i>
+    {/if}
 </button>

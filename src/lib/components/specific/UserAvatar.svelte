@@ -18,7 +18,7 @@
     $: getEmailHash($user.email)
 </script>
 
-<div class="mask mask-hexagon">
+<div class="">
     <img src="https://www.gravatar.com/avatar/{md5Hash}?d=mp{sizeLarge ? '&s=250' : ''}"
          alt="Profile photo for {$user?.name}">
 </div>

@@ -2,6 +2,6 @@
     let currentYear = new Date().getFullYear();
 </script>
 
-<footer class="text-center py-4">
+<footer class="">
     Your Site {currentYear}
 </footer>

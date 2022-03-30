@@ -10,9 +10,9 @@
     export let autocomplete;
 </script>
 
-<div class="form-control">
+<div class="">
     <label class="label" for={id}>
-        <span class="label-text">{label}</span>
+        <span class="">{label}</span>
     </label>
 
     <input {type}

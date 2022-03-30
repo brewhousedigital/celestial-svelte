@@ -1,22 +1,17 @@
 <script>
-    import InfoIcon from "$lib/icons/InfoIcon.svelte";
-    import CheckIcon from "$lib/icons/CheckIcon.svelte";
-    import WarningIcon from "$lib/icons/WarningIcon.svelte";
-    import ErrorIcon from "$lib/icons/ErrorIcon.svelte";
-
     export let variant = ""; // "" | "info" | "success" | "warning" | "error"
     export let shadow = true;
     export let text;
 </script>
 
 
-<div class="alert {variant.length > 0 ? `alert-${variant}` : ''} {shadow ? 'shadow-lg' : ''} font-bold">
+<div class="alert {variant.length > 0 ? `alert-${variant}` : ''} {shadow ? 'shadow-lg' : ''}">
     <div>
-        {#if variant === ""}<InfoIcon />{/if}
-        {#if variant === "info"}<InfoIcon />{/if}
-        {#if variant === "success"}<CheckIcon />{/if}
-        {#if variant === "warning"}<WarningIcon />{/if}
-        {#if variant === "error"}<ErrorIcon />{/if}
+        {#if variant === ""}<i class="bi bi-lightbulb"></i>{/if}
+        {#if variant === "info"}<i class="bi bi-lightbulb"></i>{/if}
+        {#if variant === "success"}<i class="bi bi-check-lg"></i>{/if}
+        {#if variant === "warning"}<i class="bi bi-exclamation-triangle"></i>{/if}
+        {#if variant === "error"}<i class="bi bi-exclamation-octagon-fill"></i>{/if}
 
         <span>
             {#if text}
