@@ -10,6 +10,14 @@ An easy-to-use starter repository that shows you how to build a fully functionin
 * [Netlify - Static Site Hosting](https://eleventy-website-template.netlify.app/)
 * [Project GitHub Page](https://github.com/brewhousedigital/celestial-svelte)
 
+This project uses Tailwind and DaisyUI for styling
+
+* [Tailwind](https://tailwindcss.com/)
+* [DaisyUI](https://daisyui.com/)
+
+The base version is hosted here:
+
+* [Base Celestial Site](https://build.celestial.dev/)
 
 ___
 
