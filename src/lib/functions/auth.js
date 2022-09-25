@@ -43,17 +43,25 @@ export const handleLogout = async() => {
 }
 
 export const handleRegister = async(registerData) => {
-    try {
-        let user = new Backendless.User();
-        user.email = registerData.email;
-        user.password = registerData.password;
+    const fetchRequest = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json",
+        },
+        body: JSON.stringify({
+            email: registerData.email,
+            password: registerData.password
+        })
+    })
 
-        await Backendless.UserService.register(user);
+    const response = await fetchRequest.json();
 
-        await goto('/register/confirm')
-    } catch(error) {
-        siteError.set(error.message);
+    // Verify that the registration was successful
+    if(response?.status !== "success") {
+        siteError.set(response.message);
+        return false;
     }
 
-    return false;
+    // Navigate to the account page
+    return response;
 }

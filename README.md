@@ -115,6 +115,33 @@ ___
 
 
 
+Setting up Registration with Email Confirmation
+This takes a bit more work since we have to use the Backendless UI Builder.
+Switch over to Front-end mode
+(image)
+Then change the mode to "System"
+(image)
+Then choose the Confirmation page
+You can either delete this content, or add something in there. It will only briefly show to the user
+Go into the "Logic" section
+(picture)
+And then add an "On Mounted" handler. Now we want to add a redirect and send the user back to your website once they've been confirmed.
+(image)
+Now add from the App Router section, the "Open Web Page" action.
+(image)
+Add in your website URL, I'll use Localhost for this example, and set the "open in another window" to false.
+(image)
+Now let's publish our new page
+(image)
+(If you see an issue where the confirmation page gets stuck in a reload loop, just republish the app and that should fix it)
+
+
+
+
+
+Setting up a secret key for security
+This is an extra layer that Netlify will handle. We set up a secret key, then set up cloud code to only act if the secret key exists. This is a good way to prevent someone from spinning up a local site and trying to use your backendless API keys.
+---- I wasn't able to figure this out
 
 
 

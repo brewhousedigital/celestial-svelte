@@ -9,15 +9,15 @@
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
-    handleLogin(loginData);
+    await handleLogin(loginData);
   }
 </script>
 
 <div class="container">
-    <h1 class="">Log In</h1>
+    <h1 class="mb-4">Log In</h1>
 
     <form on:submit={handleSubmit} class="" style="max-width: 400px">
         <Input label="Email:"

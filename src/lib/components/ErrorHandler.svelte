@@ -14,7 +14,7 @@
 </script>
 
 
-{#if $siteError.length > 0}
+{#if $siteError?.length > 0}
     <div id="error-handler" transition:slide>
         <Alert variant="warning" text={$siteError} />
     </div>

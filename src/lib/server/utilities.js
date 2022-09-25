@@ -31,7 +31,7 @@ export const validateUser = async(request) => {
   // The Backendless SDK only allows client side validation, so use REST instead
   const validateUser = await fetch(`${REST_API}/api/users/isvalidusertoken/${token}`);
 
-  return validateUser.json();
+  return await validateUser.json();
 }
 
 
@@ -116,12 +116,33 @@ export const response = async(data = {}, options = {}) => {
 }
 
 
-export const getAllRows = async(tableName) => {
+export const getAllRows = async(request, tableName) => {
+  // Get all cookies in the request
+  const parsedCookies = await searchCookies(request);
+
+  // Get the user's token
+  const token = parsedCookies?.['user-token'];
+
+  // If no bearer token was passed, this will be undefined
+  if(!token) {
+    return false;
+  }
+
+
   let tableData;
 
   try {
-    tableData = await Backendless.Data.of(tableName).find();
-    tableData = [...tableData];
+    const getData = await fetch(`${REST_API}/api/data/${tableName}`, {
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': "application/json",
+        'user-token': token,
+      },
+    });
+
+    tableData = await getData.json();
+
   } catch (error) {
     tableData = {...error};
   }

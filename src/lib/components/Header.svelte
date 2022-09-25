@@ -23,6 +23,8 @@
 
         {#if !$user.email}
             <Button href="/login">Log In</Button>
+
+            <Button href="/register">Register</Button>
         {/if}
 
 
