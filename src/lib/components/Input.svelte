@@ -4,14 +4,15 @@
     export let id = "";
     export let placeholder = "";
     export let value = "";
+    export let boxClasses = "";
 
     const onInput = e => (value = e.target.value);
 
     export let autocomplete;
 </script>
 
-<div class="">
-    <label class="label" for={id}>
+<div class={boxClasses}>
+    <label class="form-label" for={id}>
         <span class="">{label}</span>
     </label>
 
@@ -20,6 +21,6 @@
            {value}
            id={id}
            on:input={onInput}
-           class="input input-bordered"
+           class="form-control"
            {autocomplete}>
 </div>

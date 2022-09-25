@@ -1,6 +1,6 @@
 <script>
     import {handleRegister} from "$lib/functions/auth";
-    import Input from "$lib/components/reusable/Input.svelte";
+    import Input from "$lib/components/Input.svelte";
 
     let registerData = {
         email: "",

@@ -1,8 +1,8 @@
 <script>
-    import UserAvatar from "$lib/components/specific/UserAvatar.svelte";
+    import UserAvatar from "$lib/components/UserAvatar.svelte";
     import {database} from "$lib/functions/database";
     import {user} from "$lib/store";
-    import Input from "$lib/components/reusable/Input.svelte";
+    import Input from "$lib/components/Input.svelte";
 
     // Clone the user object so we dont overwrite it on accident
     let userObject = {...$user};

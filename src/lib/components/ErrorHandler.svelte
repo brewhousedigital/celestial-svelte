@@ -1,8 +1,8 @@
 <script>
     import settings from "$lib/data/settings.json";
     import { slide } from "svelte/transition";
-    import {siteError} from "$lib/store";
-    import Alert from "$lib/components/reusable/Alert.svelte";
+    import {siteError} from "$lib/store.js";
+    import Alert from "$lib/components/Alert.svelte";
 
     $: {
         if($siteError.length > 0) {

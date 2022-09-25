@@ -1,33 +1,6 @@
 {
   "unauthenticatedFallbackPage": "/login",
   "errorMessageTimeoutLength": 10000,
-  "additionalSiteThemes": [
-    "cupcake",
-    "bumblebee",
-    "emerald",
-    "corporate",
-    "synthwave",
-    "retro",
-    "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cymk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter"
-  ]
+  "loadingIcon": "bi bi-arrow-clockwise",
+  "defaultCookieAgeMilliseconds": 1209600000
 }
