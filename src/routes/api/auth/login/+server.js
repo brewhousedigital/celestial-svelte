@@ -1,5 +1,5 @@
 import Backendless from 'backendless'
-import {startBackendless, createCookie, response} from "$lib/server/utilities.js";
+import {startBackendless, createCookie, response, getUserDataByObjectId, forbidden} from "$lib/server/utilities.js";
 
 
 export async function POST({request}) {
@@ -30,10 +30,14 @@ export async function POST({request}) {
         'Content-Type': 'text/html',
       },
     }
+
+    // Filter out the user data and only return specific values
+    apiData = await getUserDataByObjectId(apiData['objectId']);
+    if(!apiData) {return forbidden()}
   } catch(error) {
     apiData = error;
   }
 
 
-  return response({...apiData}, apiHeaders)
+  return response(apiData, apiHeaders)
 }

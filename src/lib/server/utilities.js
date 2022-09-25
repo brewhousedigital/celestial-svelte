@@ -35,7 +35,7 @@ export const validateUser = async(request) => {
 }
 
 
-export const getUserData = async(request) => {
+export const getUserDataByCookies = async(request) => {
   // Get all cookies in the request
   const parsedCookies = await searchCookies(request);
 
@@ -47,6 +47,11 @@ export const getUserData = async(request) => {
     return false;
   }
 
+  return getUserDataByObjectId(objectId);
+}
+
+
+export const getUserDataByObjectId = async(objectId) => {
   let apiData;
 
   try {

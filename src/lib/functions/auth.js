@@ -1,42 +1,43 @@
 import Backendless from "backendless";
 import {user, siteError} from "$lib/store";
-import publicRoutes from "$lib/data/publicRoutes.json";
 import {goto} from "$app/navigation";
 
-// Check if user is logged in
-export const validateUserToken = async() => {
-    try {
-        if(response) {
-            // Valid user found
-            user.set(response);
-        } else {
-            // Unset the user store
-            user.set({});
 
-            // Invalid user found. Grab their current location to match against the publicRoutes list
-            let currentLocation = window.location.pathname;
+export const handleLogin = async(loginData) => {
+    const fetchRequest = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json",
+        },
+        body: JSON.stringify({
+            email: loginData.email,
+            password: loginData.password
+        })
+    })
 
-            // This will redirect if the unauthenticated user is on a private route
-            if(!publicRoutes.includes(currentLocation)) {
-                await goto("/login?error=expired-token");
-                siteError.set("Please log back in");
-                return false;
-            }
-        }
-    } catch(error) {
-        // User has invalid token, so log them out
-        await Backendless.UserService.logout();
-        user.set({});
-        await goto("/?error=expired-token");
-        siteError.set("Please log back in");
+    const response = await fetchRequest.json();
+
+    // Verify that the login was successful
+    if(response?.status !== "success") {
+        siteError.set(response.message);
         return false;
     }
+
+    // Save the updated user information to the global store
+    user.set(response);
+
+    // Navigate to the account page
+    await goto('/account')
 }
 
+
 export const handleLogout = async() => {
-    await Backendless.UserService.logout();
+    const fetchRequest = await fetch("/api/auth/logout")
+    const response = await fetchRequest.json();
+
     user.set({});
     await goto("/");
+
     siteError.set("You have been logged out");
     return false;
 }

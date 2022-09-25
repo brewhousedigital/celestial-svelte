@@ -508,3 +508,7 @@ h1, h2, h3, h4, h5, h6,
 [data-theme="dark"] nav {
     background-color: var(--bs-gray-200)
 }
+
+main .container {
+    padding: 0 36px
+}

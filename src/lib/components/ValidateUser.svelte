@@ -9,18 +9,20 @@
   onMount(async() => {
     const url = $page.url.pathname;
 
-    // Check if the user is on a private route
-    if(!publicRoutes.includes(url)) {
-      // Check if the user is authenticated and retrieve their data
-      const authCheck = await fetch("/api/auth/validate");
-      const response = await authCheck.json();
+    // Check if the user is authenticated and retrieve their data
+    const authCheck = await fetch("/api/auth/validate");
+    const response = await authCheck.json();
 
-      if(response?.status !== "success") {
+    if(response?.status !== "success") {
+      // Check if the user is on a private route
+      if(!publicRoutes.includes(url)) {
         // Send the user to the login page
         await goto("/login");
       }
+    }
 
-      // User was validated, and now we can update the global state
+    // User was validated, and now we can update the global state
+    if(response?.status === "success") {
       user.set(response);
     }
   })
